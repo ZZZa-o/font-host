@@ -63,6 +63,35 @@ npm start
 3. 添加持久化存储，挂载路径设为 `/app/fonts`（或通过 `FONT_DIR` 指定其他路径）
 4. 设置环境变量 `PORT`（Zeabur 会自动注入，通常无需手动设置）
 
+### Claw Cloud Run
+
+1. 登录 [run.claw.cloud](https://run.claw.cloud)，进入 **App Launchpad** → 点击 **Create App**
+2. 填写应用名称，Image Name 填入：
+
+   ```
+   zzzaoa/font-host:latest
+   ```
+
+3. 在 **Network** 区域，Container Port 填 `3000`，开启 Public Access 获取公开域名
+4. 在 **Usage** 区域，选择 Fixed，配置资源：
+
+   | 参数   | 值    |
+   |--------|-------|
+   | CPU    | 0.2   |
+   | Memory | 256 M |
+
+5. 在 **Environment Variables** 中点击 `+ Add`，添加：
+
+   | Key        | Value        |
+   |------------|--------------|
+   | `FONT_DIR` | `/data/fonts` |
+
+6. 在 **Local Storage** 中点击 `+ Add`，添加持久化存储：
+   - Mount Path：`/data/fonts`
+   - 容量：`1 Gi`
+
+7. 点击 **Deploy** 完成部署，通过 Network 区域显示的公开地址访问
+
 ### Render
 
 1. 将项目推送到 Git 仓库
@@ -76,7 +105,7 @@ npm start
    | Start Command    | `npm start`     |
 
 4. 在 **Environment** 中添加环境变量：
-
+（免费套餐不要添加，记得保活）
    | 变量       | 值         |
    |------------|------------|
    | `FONT_DIR` | `/data/fonts` |
