@@ -53,17 +53,6 @@ npm start
 | POST   | `/api/upload`      | 上传字体（`multipart`，字段名 `font`）|
 | DELETE | `/api/fonts/:name` | 删除指定字体                      |
 
-### 在 Ny Font Manager 中使用
-
-将原来的字体文件直链替换为 `/css/` 链接：
-
-```
-# 单个字体
-https://your-domain.com/css/MyFont.ttf
-
-# 一次导入全部字体
-https://your-domain.com/css
-```
 
 ## 部署
 
